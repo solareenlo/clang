@@ -1,6 +1,5 @@
 /*
- * ファイルの読み込み
- * 1行ずつ
+ * fgets を用いた1行ずつのテキストファイルの読み込み
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,7 +14,7 @@ int main(void) {
   char line[SIZE]; // 読み込むファイルを格納する配列
   line[0] = '\0'; // 初期化
 
-  getcwd(pathname, 256); // カレントディレクトリへのパスを取得する
+  getcwd(pathname, SIZE); // カレントディレクトリへのパスを取得する
   strcat(pathname, "/047_sample.txt");
   printf("%s\n", pathname);
 

@@ -1,6 +1,5 @@
 /*
- * ファイルの読み込み
- * 1文字ずつ
+ * fgetsc を用いた1文字ずつのテキストファイルの読み込み
  */
 #include <stdio.h>
 #include <stdlib.h>

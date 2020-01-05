@@ -1,5 +1,5 @@
 /*
- * ファイルへの書き込み
+ * fprintf を用いたテキストファイルへの書き込み
  */
 #include <stdio.h>
 #include <stdlib.h>
