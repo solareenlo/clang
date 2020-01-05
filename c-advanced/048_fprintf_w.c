@@ -1,16 +1,18 @@
 /*
- * ファイルの読み込み
+ * ファイルへの書き込み
  */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 
-int main(void) {
-  FILE *file;
-  char pathname[256];
+#define SIZE 256
 
-  getcwd(pathname, 256); // カレントディレクトリへのパスを取得する
+int main(void) {
+  FILE *file; // フィアルポインタ
+  char pathname[SIZE]; // 書き込むファイルへのパス
+
+  getcwd(pathname, SIZE); // カレントディレクトリへのパスを取得する
   strcat(pathname, "/047_sample.txt");
   printf("%s\n", pathname);
 
