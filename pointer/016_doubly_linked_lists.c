@@ -24,7 +24,7 @@ int main(void) {
       printf("malloc error\n");
       exit(1);
     }
-    // 以下の部分の理解には同じディレクトリにある img ディレクトリ内の 016_doubly_linked_list.png を参照のこと
+    // 以下の部分の理解には同じディレクトリにある img ディレクトリ内の 016_doubly_linked_lists.png を参照のこと
     ima->data = i; // 今参照してる構造体のdataにiの値を代入
     ima->next = head.next; // head.nextには1つ前の構造体のアドレスが格納されてる
     head.next = ima; // 次生成する構造体のために、今の構造体のアドレスをhead.nextに格納してる
