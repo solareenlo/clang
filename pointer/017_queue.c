@@ -8,17 +8,17 @@
 #include <string.h>
 
 typedef struct list {
-  struct list *next;
-  struct list *prev;
-  int data;
+  struct list *next; // 次のデータへのポインタ
+  struct list *prev; // 前のデータへのポインタ
+  int data; // 格納するデータ
 } LIST;
 
 typedef struct {
-  struct list *first;
-  struct list *last;
+  struct list *first; // queue の先頭データへのポインタ
+  struct list *last; // queue の最後データへのポインタ
 } HEADER;
 
-HEADER head;
+HEADER head; // これが queue
 
 void enqueue(LIST *ima, HEADER *head); // doubly linked list で構造体をリスト化
 LIST *dequeue(HEADER *head); // データ先出し用の関数
@@ -35,7 +35,7 @@ int main(void) {
   /* printf("構造体にデータを先入れ\n"); */
   for(i=0; i<3; i++) {
     ima = malloc(sizeof(LIST));
-    ima->data = i; // データを先入れ
+    ima->data = i; // データを格納
     enqueue(ima, &head); // doubly linked list で構造体をリスト化
     /* printf("前: %p, 今: %p, 次: %p, データ: %d\n", ima->prev, ima, ima->next, ima->data); */
   }
@@ -89,8 +89,8 @@ LIST *dequeue(HEADER *head) {
   if(temp == (LIST*)head) { // queue の先頭が自分自身を参照している場合は，
     temp = NULL;            // queue の中身は空ということ．
   } else {
-    head->first = temp->next; // queue の先頭は2番目のデータを参照する
-    head->first->prev = (LIST*)head;
+    head->first = temp->next; // queue の先頭は next データを参照する
+    head->first->prev = (LIST*)head; // queue の次のデータの preve データは queue 自身を参照する
   }
   return temp;
 }
@@ -115,6 +115,7 @@ LIST *aoqueue(HEADER *head) {
 void enqueue(LIST *ima, HEADER *head) {
   LIST *temp; // 飛び石用の構造体ポインタ生成
 
+  // 以下の部分の理解には同じディレクトリにある img ディレクトリ内の 016_doubly_linked_list.png を参照のこと
   temp = head->last; // tempに1つ前の構造体のアドレスを代入
   head->last = ima; // 今のアドレスを代入して，次の構造体が参照できる用に，
   ima->prev = temp; // 今の prev に1つ前の構造体のアドレスを代入
