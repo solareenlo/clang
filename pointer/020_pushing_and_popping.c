@@ -1,5 +1,5 @@
 /*
- * stack 形式でデータを push して pop する
+ * stack 形式のデータを push して pop する
  */
 #include <stdio.h>
 #include <stdlib.h>
