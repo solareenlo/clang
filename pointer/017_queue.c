@@ -20,7 +20,7 @@ typedef struct {
 
 HEADER head;
 
-void enqueue(LIST *ima); // doubly linked list で構造体をリスト化
+void enqueue(LIST *ima, HEADER *head); // doubly linked list で構造体をリスト化
 LIST *dequeue(); // データ先出し用の関数
 LIST *aoqueue(); // データ後出し用の関数
 
@@ -36,7 +36,7 @@ int main(void) {
   for(i=0; i<3; i++) {
     ima = malloc(sizeof(LIST));
     ima->data = i; // データを先入れ
-    enqueue(ima); // doubly linked list で構造体をリスト化
+    enqueue(ima, &head); // doubly linked list で構造体をリスト化
     /* printf("前: %p, 今: %p, 次: %p, データ: %d\n", ima->prev, ima, ima->next, ima->data); */
   }
 
@@ -108,13 +108,13 @@ LIST *aoqueue() {
 }
 
 // 構造体データを double linked list でリスト化
-void enqueue(LIST *ima) {
+void enqueue(LIST *ima, HEADER *head) {
   LIST *temp; // 飛び石用の構造体ポインタ生成
 
-  temp = head.last; // tempに1つ前の構造体のアドレスを代入
-  head.last = ima; // 今のアドレスを代入して，次の構造体が参照できる用に，
+  temp = head->last; // tempに1つ前の構造体のアドレスを代入
+  head->last = ima; // 今のアドレスを代入して，次の構造体が参照できる用に，
   ima->prev = temp; // 今の prev に1つ前の構造体のアドレスを代入
-  ima->next = (LIST*)&head; // 今の next に head のアドレスを代入して初期化
+  ima->next = (LIST*)head; // 今の next に head のアドレスを代入して初期化
   temp->next = ima; // 1つ前の構造体の next に今のアドレスを代入
 }
 
