@@ -116,7 +116,7 @@ void enqueue(LIST *ima, HEADER *head) {
   LIST *temp; // 飛び石用の構造体ポインタ生成
 
   // 以下の部分の理解には同じディレクトリにある img ディレクトリ内の 016_doubly_linked_list.png を参照のこと
-  temp = head->last; // tempに1つ前の構造体のアドレスを代入
+  temp = head->last; // temp に1つ前の構造体のアドレスを代入
   head->last = ima; // 今のアドレスを代入して，次の構造体が参照できる用に，
   ima->prev = temp; // 今の prev に1つ前の構造体のアドレスを代入
   ima->next = (LIST*)head; // 今の next に head のアドレスを代入して初期化
