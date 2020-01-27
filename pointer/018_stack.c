@@ -89,3 +89,23 @@ void stackPrint(int num) {
   }
   printf("]\n");
 }
+
+/* Output is here.
+ * push  0: stack []
+ * push  1: stack [  0]
+ * push  2: stack [  0  1]
+ * push  3: stack [  0  1  2]
+ * push  4: stack [  0  1  2  3]
+ * 底のデータ: 0, 0.00
+ * 最後のデータ: 4, 12.00
+ * ポップしたデータ: 4, 12.00
+ * pop  4: stack [  0  1  2  3]
+ * ポップしたデータ: 3, 9.00
+ * pop  3: stack [  0  1  2]
+ * ポップしたデータ: 2, 6.00
+ * pop  2: stack [  0  1]
+ * ポップしたデータ: 1, 3.00
+ * pop  1: stack [  0]
+ * ポップしたデータ: 0, 0.00
+ * pop  0: stack []
+ */
