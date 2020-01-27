@@ -82,6 +82,7 @@ int main(void) {
 // データ先出し用の関数
 LIST *dequeue() {
   LIST *temp; // 飛び石用の構造体ポインタ生成
+
   temp = head.first;
   if(temp == (LIST*)&head) {
     temp = NULL;
@@ -95,6 +96,7 @@ LIST *dequeue() {
 // データ後出し用の関数
 LIST *aoqueue() {
   LIST *temp; // 飛び石用の構造体ポインタ生成
+
   temp = head.last;
   if(temp == (LIST*)&head) {
     temp = NULL;
@@ -108,6 +110,7 @@ LIST *aoqueue() {
 // 構造体データを double linked list でリスト化
 void enqueue(LIST *ima) {
   LIST *temp; // 飛び石用の構造体ポインタ生成
+
   temp = head.last; // tempに1つ前の構造体のアドレスを代入
   head.last = ima; // 今のアドレスを代入して，次の構造体が参照できる用に，
   ima->prev = temp; // 今の prev に1つ前の構造体のアドレスを代入
