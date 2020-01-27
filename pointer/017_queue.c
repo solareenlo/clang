@@ -21,7 +21,7 @@ typedef struct {
 HEADER head;
 
 void enqueue(LIST *ima, HEADER *head); // doubly linked list で構造体をリスト化
-LIST *dequeue(); // データ先出し用の関数
+LIST *dequeue(HEADER *head); // データ先出し用の関数
 LIST *aoqueue(); // データ後出し用の関数
 
 int main(void) {
@@ -59,7 +59,7 @@ int main(void) {
   // ima 構造体からデータを先出し
   printf("Queue を使って構造体からデータを先出し\n");
   do {
-    ima = dequeue();
+    ima = dequeue(&head);
     if(ima != NULL) {
       printf("前:%p, 今:%p, 次:%p, データ:%d\n", ima->prev, ima, ima->next, ima->data);
       free(ima);
@@ -80,15 +80,17 @@ int main(void) {
 }
 
 // データ先出し用の関数
-LIST *dequeue() {
+// 戻り値はデータ
+// データがない場合は NULL を返す
+LIST *dequeue(HEADER *head) {
   LIST *temp; // 飛び石用の構造体ポインタ生成
 
-  temp = head.first;
-  if(temp == (LIST*)&head) {
-    temp = NULL;
+  temp = head->first;
+  if(temp == (LIST*)head) { // queue の先頭が自分自身を参照している場合は，
+    temp = NULL;            // queue の中身は空ということ．
   } else {
-    head.first = temp->next;
-    head.first->prev = (LIST*)&head;
+    head->first = temp->next; // queue の先頭は2番目のデータを参照する
+    head->first->prev = (LIST*)head;
   }
   return temp;
 }
