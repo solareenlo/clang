@@ -22,7 +22,7 @@ HEADER head;
 
 void enqueue(LIST *ima, HEADER *head); // doubly linked list で構造体をリスト化
 LIST *dequeue(HEADER *head); // データ先出し用の関数
-LIST *aoqueue(); // データ後出し用の関数
+LIST *aoqueue(HEADER *head); // データ後出し用の関数
 
 int main(void) {
   int i;
@@ -69,7 +69,7 @@ int main(void) {
   // ima 構造体からデータを後出し
   /* printf("Queue を使って構造体からデータを後出し\n"); */
   /* do { */
-  /*   ima = aoqueue(); */
+  /*   ima = aoqueue(&head); */
   /*   if(ima != NULL) { */
   /*     printf("前: %p, 今: %p, 次: %p, データ: %d\n", ima->prev, ima, ima->next, ima->data); */
   /*     free(ima); */
@@ -96,15 +96,17 @@ LIST *dequeue(HEADER *head) {
 }
 
 // データ後出し用の関数
-LIST *aoqueue() {
+// 戻り値はデータ
+// データがない場合は NULL を返す
+LIST *aoqueue(HEADER *head) {
   LIST *temp; // 飛び石用の構造体ポインタ生成
 
-  temp = head.last;
-  if(temp == (LIST*)&head) {
-    temp = NULL;
+  temp = head->last;
+  if(temp == (LIST*)head) { // queue の最後が自分自身を参照している場合は，
+    temp = NULL;            // queue の中身は空ということ．
   } else {
-    head.last = temp->prev;
-    head.last->next = (LIST*)&head;
+    head->last = temp->prev; // queue の最後が1つ前のデータを参照する
+    head->last->next = (LIST*)head; // 1つ前のデータの次のデータは head を参照する
   }
   return temp;
 }
