@@ -74,8 +74,8 @@ LISTITEM* dequeue(LISTHDR *queue) {
     temp = NULL;                 // queue の中身は空ということ．
   }
   else {
-    queue->first = temp->next; // queue の先頭は2番目のデータを参照する
-    queue->first->prev = (LISTITEM*)queue;
+    queue->first = temp->next; // queue の先頭は次のデータを参照する
+    queue->first->prev = (LISTITEM*)queue; // 次のデータの prev は queue 自身を参照する
   }
   return temp;
 }
