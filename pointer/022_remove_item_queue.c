@@ -1,3 +1,6 @@
+/*
+ * queue 内の途中の item を削除する
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -32,7 +35,7 @@ int main() {
   head.last = (LISTITEM*)&head;
 
   for(i=0; i<5; i++) {               // queue を作成する
-    temp = malloc(sizeof(LISTITEM)); // malloc で動的に queue の1つの要素を確保する
+    temp = malloc(sizeof(LISTITEM)); // malloc で動的に queue の1つの item 分を確保する
     temp->data = i;                  // データを格納する
     enqueue(&head, temp);            // temp を queue 内に配置する
   }
@@ -118,7 +121,7 @@ int queue_length(LISTHDR* queue) {
 
 // this removes an item from 'position' in a queue - returns the item or NULL if the position does not exist
 // NOTE: this uses a similar queue iteration technique to that used in 'queue_length'
-// position から要素を削除する
+// position から item を削除する
 LISTITEM *remove_at(LISTHDR *queue, int position) {
   LISTITEM *temp;
   int i;
@@ -128,7 +131,7 @@ LISTITEM *remove_at(LISTHDR *queue, int position) {
     return NULL;
   }
 
-  temp = queue->first; // queue の先頭の要素を取得する
+  temp = queue->first; // queue の先頭の item を取得する
   i = 0;
   do {
     // この if 文で，queue が空かどうかを確認する
@@ -139,13 +142,13 @@ LISTITEM *remove_at(LISTHDR *queue, int position) {
     }
     if(i == position) {
       // 以下の2つで自分への参照を飛ばす
-      temp->prev->next = temp->next; // [自分の前の要素]の次の参照を，自分の次の要素に変更する
-      temp->next->prev = temp->prev; // [自分の次の要素]の前の参照を，自分の前の要素に変更する
+      temp->prev->next = temp->next; // [自分の前の item ]の次の参照を，自分の次の item に変更する
+      temp->next->prev = temp->prev; // [自分の次の item ]の前の参照を，自分の前の item に変更する
       temp->next = NULL; // 参照を削除
       temp->prev = NULL; // 参照を削除
       break;
     }
-    temp = temp->next; // queue 内の次の要素を取得する
+    temp = temp->next; // queue 内の次の item を取得する
     i = i + 1;         // 対応するインデックス position をインクリメントする
   } while (temp != NULL);
 
