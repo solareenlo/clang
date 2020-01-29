@@ -134,13 +134,15 @@ int queue_length(LISTHDR* queue) {
 }
 
 // this removes an item from 'position' in a queue - returns the item or NULL if the position does not exist
-// NOTE: this uses a similar queue iteration technique to that used in 'queue_length'
 // position から item を削除する
+// position が無い場合は NULL を返す
+// NOTE: this uses a similar queue iteration technique to that used in 'queue_length'
 LISTITEM *remove_at(LISTHDR *queue, int position) {
   LISTITEM *temp;
   int i;
 
-  // 注：この例では負の位置を扱いませんが、逆のポインターを position として使用することを示すために負の位置を使用できます
+  // 注: この例では負の位置を扱いませんが，
+  // 逆のポインターを position として使用することを示すために負の position を使用できます
   if(position < 0) {
     return NULL;
   }
