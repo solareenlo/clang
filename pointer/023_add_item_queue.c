@@ -8,19 +8,19 @@
 typedef struct listitem {
   struct listitem *next; // 次のデータへのポインタ
   struct listitem *prev; // 前のデータへのポインタ
-  int data; // 格納するデータ
+  int data;              // 格納するデータ
 } LISTITEM;
 
 typedef struct {
   struct listitem *first; // queue 内の先頭データへのポインタ
-  struct listitem *last; // queue 内の最後データへのポインタ
+  struct listitem *last;  // queue 内の最後データへのポインタ
 } LISTHDR;
 
 LISTHDR head; // これが queue
 
 void enqueue(LISTHDR *queue, LISTITEM *item); // queue の最後にデータを追加する
-LISTITEM *dequeue(LISTHDR *queue); // queue の一番初めからデータを削除する
-int queue_length(LISTHDR *queue); // queue 内のデータ数を返す
+LISTITEM *dequeue(LISTHDR *queue);            // queue の一番初めからデータを削除する
+int queue_length(LISTHDR *queue);             // queue 内のデータ数を返す
 LISTITEM *add_after(LISTHDR *queue, int position, LISTITEM* item);
 
 int main(void) {
@@ -35,11 +35,11 @@ int main(void) {
   head.first = (LISTITEM*)&head;
   head.last = (LISTITEM*)&head;
 
-  for (i=0; i<3; i++) { // queue を作成する
+  for (i=0; i<3; i++) {              // queue を作成する
     temp = malloc(sizeof(LISTITEM)); // malloc で動的に queue の1つの item 分を確保する
     printf("item[%d] のアドレス: %p\n", i, temp);
-    temp->data = i; // とりあえすのデータを設定する
-    enqueue(&head, temp); // queue 内に配置する
+    temp->data = i;                  // とりあえすのデータを設定する
+    enqueue(&head, temp);            // queue 内に配置する
   }
 
   printf("queue の長さ: %d\n", queue_length(&head));
@@ -90,11 +90,11 @@ int main(void) {
 void enqueue(LISTHDR *queue, LISTITEM *item) {
   LISTITEM *temp;
 
-  temp = queue->last;        // queue の最後のデータを確保する
-  queue->last = item;        // queue の最後にデータを追加する
-  item->prev = temp;        // 古い方の最後のデータを item の prev にリンクする
+  temp = queue->last;             // queue の最後のデータを確保する
+  queue->last = item;             // queue の最後にデータを追加する
+  item->prev = temp;              // 古い方の最後のデータを item の prev にリンクする
   item->next = (LISTITEM*)queue;  // 新しい item の前方リンクを設定する
-  temp->next = item;        // 古い最後の item の新しいリンクを前方リンクに設定する
+  temp->next = item;              // 古い最後の item の新しいリンクを前方リンクに設定する
 }
 
 // queue の一番初めからデータを取り出す
@@ -108,7 +108,7 @@ LISTITEM *dequeue(LISTHDR *queue) {
     temp = NULL;                 // queue の中身は空ということ．
   }
   else {
-    queue->first = temp->next; // queue の先頭は次のデータを参照する
+    queue->first = temp->next;             // queue の先頭は次のデータを参照する
     queue->first->prev = (LISTITEM*)queue; // 次のデータの prev は queue 自身を参照する
   }
   return temp;
