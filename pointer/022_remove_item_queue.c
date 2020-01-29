@@ -56,6 +56,20 @@ int main() {
     else {
       printf("ERROR: cannot remove at %d\n", requested_index);
     }
+    // 昇順に queue の item を表示する
+    temp = head.first;
+    printf("昇順 ...\n");
+    do {
+      printf("addr=%p; data=%2d; next=%p; prev=%p;\n", temp, temp->data, temp->next, temp->prev);
+      temp = temp->next;
+    } while (temp != head.first);
+    // 降順 に queue の item を表示する
+    printf("降順 ...\n");
+    temp = head.last;
+    do {
+      printf("addr=%p; data=%2d; next=%p; prev=%p;\n", temp, temp->data, temp->next, temp->prev);
+      temp = temp->prev;
+    } while (temp != head.last);
 //  } while (temp != NULL);
 
   // 削除した結果を表示する
