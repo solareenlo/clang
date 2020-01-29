@@ -174,3 +174,32 @@ LISTITEM* add_after(LISTHDR *queue, int position, LISTITEM* item) {
 
   return temp;
 }
+
+/* Output is here
+ * address of head = 0x103ebf038
+ * item[0] のアドレス: 0x7f90f4c01780
+ * item[1] のアドレス: 0x7f90f4c017a0
+ * item[2] のアドレス: 0x7f90f4c017c0
+ * queue の長さ: 3
+ * warning: this program uses gets(), which is unsafe.
+ * enter the index of the queue entry ... 0
+ * 追加する item のアドレス: 0x7f90f4d00000
+ * 追加した item: 0
+ * 昇順 ...
+ * addr=0x7f90f4c01780; data= 0; next=0x7f90f4d00000; prev=0x103ebf038;
+ * addr=0x7f90f4d00000; data= 0; next=0x7f90f4c017a0; prev=0x7f90f4c01780;
+ * addr=0x7f90f4c017a0; data= 1; next=0x7f90f4c017c0; prev=0x7f90f4d00000;
+ * addr=0x7f90f4c017c0; data= 2; next=0x103ebf038; prev=0x7f90f4c017a0;
+ * addr=0x103ebf038; data= 0; next=0x7f90f4c01780; prev=0x7f90f4c017c0;
+ * 降順 ...
+ * addr=0x7f90f4c017c0; data= 2; next=0x103ebf038; prev=0x7f90f4c017a0;
+ * addr=0x7f90f4c017a0; data= 1; next=0x7f90f4c017c0; prev=0x7f90f4d00000;
+ * addr=0x7f90f4d00000; data= 0; next=0x7f90f4c017a0; prev=0x7f90f4c01780;
+ * addr=0x7f90f4c01780; data= 0; next=0x7f90f4d00000; prev=0x103ebf038;
+ * addr=0x103ebf038; data= 0; next=0x7f90f4c01780; prev=0x7f90f4c017c0;
+ * the length of the queue is now 4
+ * data in original queue is 0
+ * data in original queue is 0
+ * data in original queue is 1
+ * data in original queue is 2
+ */
