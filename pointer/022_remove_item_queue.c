@@ -170,3 +170,27 @@ LISTITEM *remove_at(LISTHDR *queue, int position) {
 
   return temp;
 }
+
+/* Output is here
+ * the length of the queue is 5
+ * warning: this program uses gets(), which is unsafe.
+ * enter the index of the queue entry ... 1
+ * OK: data removed at 1 is 1
+ * 昇順 ...
+ * addr=0x7fb6b7401780; data= 0; next=0x7fb6b74017c0; prev=0x10c591038;
+ * addr=0x7fb6b74017c0; data= 2; next=0x7fb6b74017e0; prev=0x7fb6b7401780;
+ * addr=0x7fb6b74017e0; data= 3; next=0x7fb6b7401800; prev=0x7fb6b74017c0;
+ * addr=0x7fb6b7401800; data= 4; next=0x10c591038; prev=0x7fb6b74017e0;
+ * addr=0x10c591038; data= 0; next=0x7fb6b7401780; prev=0x7fb6b7401800;
+ * 降順 ...
+ * addr=0x7fb6b7401800; data= 4; next=0x10c591038; prev=0x7fb6b74017e0;
+ * addr=0x7fb6b74017e0; data= 3; next=0x7fb6b7401800; prev=0x7fb6b74017c0;
+ * addr=0x7fb6b74017c0; data= 2; next=0x7fb6b74017e0; prev=0x7fb6b7401780;
+ * addr=0x7fb6b7401780; data= 0; next=0x7fb6b74017c0; prev=0x10c591038;
+ * addr=0x10c591038; data= 0; next=0x7fb6b7401780; prev=0x7fb6b7401800;
+ * the length of the queue is 4
+ * data is 0
+ * data is 2
+ * data is 3
+ * data is 4
+ */
