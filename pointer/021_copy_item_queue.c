@@ -104,3 +104,22 @@ LISTITEM* dequeue(LISTHDR *queue) {
   }
   return temp;
 }
+
+/* Output is here
+ * source queue を作成中...
+ * data is 0
+ * data is 1
+ * data is 2
+ * destination queue にコピー中...
+ * data is 0
+ * data is 1
+ * data is 2
+ * destination queue ...
+ * destination data is 0
+ * destination data is 1
+ * destination data is 2
+ * source queue ...
+ * source queue は空です
+ * destinaion queue ...
+ * destination queue は空です
+ */
