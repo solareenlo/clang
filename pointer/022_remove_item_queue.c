@@ -133,8 +133,8 @@ int queue_length(LISTHDR* queue) {
   return length;
 }
 
-// this removes an item from 'position' in a queue - returns the item or NULL if the position does not exist
 // position から item を削除する
+// 戻り値は 削除した item
 // position が無い場合は NULL を返す
 // NOTE: this uses a similar queue iteration technique to that used in 'queue_length'
 LISTITEM *remove_at(LISTHDR *queue, int position) {
